@@ -22,17 +22,17 @@ fn main()
 	let mut matris = [[' '; 21]; 21];
 	let mut matris3d = [[[0u8; 21]; 21]; 21];
 
-	for z in 0..matris3d[0][0].len()
+	for angh in 0..360
 	{
-		let rng = if z <= 10 { z } else { 20 - z };
-		for ang in 0..360
+		let x = 0f32 - (((angh as f32) * std::f32::consts::PI / 180.0).sin() * 10.0);
+		let y = ((angh as f32) * std::f32::consts::PI / 180.0).cos() * 10.0;
+		
+		for angv in 0..180
 		{
-			for distance in 1..(rng + 1)
-			{
-				let x = 0 - (((ang as f32) * std::f32::consts::PI / 180.0).sin() * (distance as f32)) as i8;
-				let y = (((ang as f32) * std::f32::consts::PI / 180.0).cos() * (distance as f32)) as i8;
-				matris3d[(10 + x) as usize][(10 + y) as usize][z] = 1;
-			}
+			let xt = 0f32 - (((angv as f32) * std::f32::consts::PI / 180.0).sin() * x);
+			let z = ((angv as f32) * std::f32::consts::PI / 180.0).cos() * x;
+			
+			matris3d[(10.0 + xt).round() as usize][(10.0 + y).round() as usize][(10.0 + z).round() as usize] = 1; 
 		}
 	}
 
