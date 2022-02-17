@@ -48,7 +48,7 @@ fn main()
 				{
 					let locx = if x >= 10 { x - 10 } else { 10 - x };
 					let locy = if y >= 10 { y - 10 } else { 10 - y };
-					let distance = (((locx.pow(2) + locy.pow(2) + z.pow(2)) as f32).sqrt() / 3.0) as usize;
+					let distance = (((locx.pow(2) + locy.pow(2) + z.pow(2)) as f32).sqrt() / 2.0) as usize;
 					matris[x][y] = if distance < shaders.len() { shaders[distance] } else { ' ' };
 				} 
 			}
